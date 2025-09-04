@@ -17,23 +17,56 @@ body {
 .heart-container {
     position: relative;
     margin-bottom: 60px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.heart-container:hover {
+    transform: scale(1.1);
+}
+
+.heart-click-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: heartHintAppear 1s ease-out 5.5s forwards, hintGlow 2s ease-in-out 6.5s infinite alternate;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes heartHintAppear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 .heart-svg {
-    width: 320px;
-    height: 290px;
+    width: 360px;
+    height: 330px;
 }
 
 .heart-path {
     fill: none;
-    stroke: #ff6b6b;
+    stroke: url(#heartGradient);
     stroke-width: 8;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: drawHeart 4s ease-in-out forwards, fillHeart 2s ease-in-out 4s forwards;
-    filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5));
+    animation: drawHeart 3.5s ease-in-out forwards, fillHeart 1.5s ease-in-out 3.5s forwards, heartPulse 3s ease-in-out 4s infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.8)) drop-shadow(0 0 30px rgba(255, 107, 107, 0.4));
 }
 
 @keyframes drawHeart {
@@ -44,8 +77,19 @@ body {
 
 @keyframes fillHeart {
     to {
-        fill: #ff6b6b;
+        fill: url(#heartFillGradient);
         stroke-dasharray: none;
+    }
+}
+
+@keyframes heartPulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.8)) drop-shadow(0 0 30px rgba(255, 107, 107, 0.4));
+    }
+    50% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 20px rgba(255, 107, 107, 1)) drop-shadow(0 0 40px rgba(255, 107, 107, 0.6));
     }
 }
 
@@ -54,11 +98,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 270px;
+    width: 340px;
+    height: 310px;
     background: radial-gradient(circle, rgba(255, 107, 107, 0.3) 0%, transparent 70%);
     border-radius: 50%;
-    animation: glow 2s ease-in-out 6s infinite alternate;
+    animation: glow 2s ease-in-out 4s infinite alternate;
     opacity: 0;
 }
 
@@ -84,7 +128,7 @@ body {
     text-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
     opacity: 0;
     transform: translateY(30px);
-    animation: revealMessage 1.5s ease-out 6.5s forwards;
+    animation: revealMessage 1s ease-out 4.5s forwards;
 }
 
 @keyframes revealMessage {
@@ -99,14 +143,7 @@ body {
 }
 
 .letter-container {
-    position: absolute;
-    bottom: 80px;
-    right: 80px;
-    opacity: 0;
-    animation: letterFloat 1.5s ease-out 8s forwards;
-    cursor: pointer;
-    z-index: 100;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: none;
 }
 
 .letter-container:hover {
@@ -495,8 +532,8 @@ body {
     }
 
     .letter-container {
-        bottom: 20px;
-        right: 20px;
+        top: 15px;
+        right: 15px;
     }
 
     .envelope {
@@ -597,8 +634,8 @@ body {
     }
 
     .letter-container {
-        bottom: 40px;
-        right: 40px;
+        top: 15px;
+        right: 15px;
     }
 
     .envelope {
@@ -667,8 +704,8 @@ body {
     }
 
     .letter-container {
-        bottom: 15px;
-        right: 15px;
+        top: 10px;
+        right: 10px;
     }
 
     .envelope {

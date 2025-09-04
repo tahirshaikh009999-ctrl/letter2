@@ -14,10 +14,10 @@
   </head>
   <body>
     <audio id="backgroundMusic" loop>
-      <source src="nothing.mp3" type="audio/mpeg">
+      <source src="nothing.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
-    
+
     <div class="background-hearts">
       <div class="bg-heart">💖</div>
       <div class="bg-heart">💕</div>
@@ -27,37 +27,47 @@
       <div class="bg-heart">💖</div>
     </div>
 
-    <div class="heart-container">
+    <div class="heart-container" onclick="openLetter()">
       <div class="heart-glow"></div>
       <svg class="heart-svg" viewBox="0 0 200 180">
+        <defs>
+          <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#ff8e8e;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ffa8a8;stop-opacity:1" />
+          </linearGradient>
+          <linearGradient id="heartFillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ff4757;stop-opacity:1" />
+            <stop offset="30%" style="stop-color:#ff6b6b;stop-opacity:1" />
+            <stop offset="70%" style="stop-color:#ff8e8e;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ffa8a8;stop-opacity:1" />
+          </linearGradient>
+        </defs>
         <path
           class="heart-path"
           d="M100,150 C100,150 170,100 170,70 C170,50 155,35 135,35 C120,35 110,45 100,55 C90,45 80,35 65,35 C45,35 30,50 30,70 C30,100 100,150 100,150 Z"
         />
       </svg>
+      <div class="heart-click-hint">Click me💕</div>
     </div>
 
     <div class="message">I love you so much Rana</div>
 
-    <div class="letter-container" onclick="openLetter()">
-      <div style="margin-bottom: 30px">
-        <div class="envelope-wrapper">
-          <div class="magic-sparkles">
-            <div class="sparkle-ring"></div>
-            <div class="sparkle-ring"></div>
-            <div class="sparkle-ring"></div>
-            <div class="sparkle-ring"></div>
-            <div class="sparkle-ring"></div>
-            <div class="sparkle-ring"></div>
-          </div>
-          <div class="envelope">
-            <div class="letter-paper">💌</div>
-          </div>
+    <div class="letter-container">
+      <div class="envelope-wrapper">
+        <div class="magic-sparkles">
+          <div class="sparkle-ring"></div>
+          <div class="sparkle-ring"></div>
+          <div class="sparkle-ring"></div>
+          <div class="sparkle-ring"></div>
+          <div class="sparkle-ring"></div>
+          <div class="sparkle-ring"></div>
         </div>
-        <div class="click-hint" style="margin-bottom: 30px">
-          Click to open 💕
+        <div class="envelope">
+          <div class="letter-paper">💌</div>
         </div>
       </div>
+      <div class="click-hint">Click to open 💕</div>
     </div>
 
     <div class="modal" id="letterModal" onclick="closeLetter()">
@@ -66,8 +76,8 @@
         <div class="modal-message">
           To my hardworking girlfriend,<br /><br />
 
-          For as long as I'm here, I will bring you to a place where it’s okay to
-          be weak. I’ll remind you that you don’t always have to be strong,
+          For as long as I'm here, I will bring you to a place where it’s okay
+          to be weak. I’ll remind you that you don’t always have to be strong,
           because even in your weakest moments, you are still worthy of love,
           kindness, and being held without question.<br /><br />
 
@@ -79,7 +89,8 @@
           You are safe with me. Always. And no matter how heavy the world feels,
           my arms will always be a place for you to rest.<br /><br />
 
-          Most of all, I just want to say I love you more than everything, and I will love you for the rest of my life 💕<br/><br/>
+          Most of all, I just want to say I love you more than everything, and I
+          will love you for the rest of my life 💕<br /><br />
           Bondeth
         </div>
         <button class="close-btn" onclick="closeLetter()">
