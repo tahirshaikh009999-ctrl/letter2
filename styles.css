@@ -43,10 +43,72 @@ body {
 .letter-container {
     margin-top: 40px; opacity: 0; animation: fadeIn 1s ease-out 5.5s forwards;
     cursor: pointer; z-index: 100;
+}.envelope-wrapper {
+    position: relative;
+    display: inline-block;
 }
+
+
+
 .envelope {
-    width: 120px; height: 80px; background: #f8f9fa;
-    border-radius: 8px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    width: 120px;
+    height: 80px;
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border-radius: 8px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        0 5px 15px rgba(0, 0, 0, 0.15),
+        inset 0 1px 3px rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+}
+
+
+
+.envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-top: 40px solid #dc3545;
+    background: linear-gradient(145deg, #ff6b6b, #dc3545);
+}
+
+
+
+.envelope::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 40px solid rgba(255, 255, 255, 0.9);
+    z-index: 1;
+}
+
+
+
+.letter-paper {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 90px;
+    height: 50px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    animation: paperPulse 2s ease-in-out infinite;
 }
 @keyframes fadeIn { to { opacity: 1; } }
 
