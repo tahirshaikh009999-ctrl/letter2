@@ -15,17 +15,6 @@ body {
     animation: backgroundChange 2s ease-out 6.5s forwards;
 }
 
-/* Secondary button style for "Back" */
-.close-btn.secondary {
-    background: #ccc;
-    color: #333;
-    box-shadow: none;
-}
-
-.close-btn.secondary:hover {
-    background: #bbb;
-}
-
 @keyframes backgroundChange {
     from {
         background: white;
