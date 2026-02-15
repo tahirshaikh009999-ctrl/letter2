@@ -1,25 +1,29 @@
-function openLetter() {
-    document.getElementById('letterModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-
-    // Play music when heart is clicked
+function openLetter(pageNumber) {
+    // Play music only on the first interaction
     const music = document.getElementById('backgroundMusic');
-    music.play().catch(e => {
-        console.log('Audio playback failed:', e);
-    });
+    if (music.paused) {
+        music.play().catch(e => console.log("Audio play blocked"));
+    }
+
+    // Hide all modals
+    const allModals = document.querySelectorAll('.modal');
+    allModals.forEach(modal => modal.style.display = 'none');
+
+    // Show the specific page
+    const targetModal = document.getElementById('modal' + pageNumber);
+    if (targetModal) {
+        targetModal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Stop background scrolling
+    }
 }
 
-
-
-function closeLetter() {
-    document.getElementById('letterModal').style.display = 'none';
+function closeAll() {
+    const allModals = document.querySelectorAll('.modal');
+    allModals.forEach(modal => modal.style.display = 'none');
     document.body.style.overflow = 'auto';
 }
 
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeLetter();
-    }
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
 });
-
